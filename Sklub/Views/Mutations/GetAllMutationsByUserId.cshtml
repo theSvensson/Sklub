@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Sklub.Models.Mutation>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ereignis</th>
+            <th>Datum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>
+                    @if (m.HasJoined)
+                    {
+                        <text>Ist der Gruppe "@m.Group.Name" beigetreten</text>
+                    }
+                    else
+                    {
+                        <text>Hat die Gruppe "@m.Group.Name" verlassen</text>
+                    }
+                </td>
+                <td>
+                    @m.Triggered.ToShortDateString()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

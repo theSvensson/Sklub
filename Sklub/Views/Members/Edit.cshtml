@@ -1,0 +1,171 @@
+﻿@model Sklub.Models.Member
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Benutzerprofil</h2>
+<hr />
+
+<ul class="nav nav-tabs" id="userProfile" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="home" aria-selected="true">Benutzer</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="profile" aria-selected="false">Zusätzlich</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="contact" aria-selected="false">Verlauf</a>
+    </li>
+</ul>
+<div class="tab-content" id="userProfileContent">
+    <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Birthdate, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+
+                    @Html.LabelFor(model => model.IsMale, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IsMale, new { htmlAttributes = new { @class = "form-control", data_toggle = "toggle", data_on = "<i class='fas fa-mars' style='color:dodgerblue'></i>", data_off = "<i class='fas fa-venus' style='color:hotpink'></i>", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.IsMale, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+
+                    @Html.LabelFor(model => model.StreetNo, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StreetNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StreetNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.ClubNo, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ClubNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ClubNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-tab">
+        <h3>Gruppen</h3>
+        <hr />
+        @{ Html.RenderAction("GetAllGroupsByUserId", "Groups", new { id = Model.ID });}
+    </div>
+    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+        <h3>Mutationen</h3>
+        <hr />
+        @{ Html.RenderAction("GetAllMutationsByUserId", "Mutations", new { id = Model.ID });}
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4 form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Details", new { id = Model.ID })" class="btn btn-info">Abbrechen</a>
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#Birthdate').datepicker({
+        uiLibrary: 'bootstrap',
+        format: 'dd.mm.yyyy'
+    });
+</script>
+

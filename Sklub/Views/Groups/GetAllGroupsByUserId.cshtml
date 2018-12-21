@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Sklub.Models.Group>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Beschreibung</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model)
+        {
+            <tr>
+                <td>
+                   @g.Name
+                </td>
+                <td>
+                    @g.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

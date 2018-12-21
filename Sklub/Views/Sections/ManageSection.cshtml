@@ -1,0 +1,98 @@
+﻿@model Sklub.Models.Section
+@{
+    ViewBag.Title = "ManageSection";
+    var membersIn = ViewData["MembersIn"] as List<Sklub.Models.Member>;
+    var membersOut = ViewData["MembersOut"] as List<Sklub.Models.Member>;
+}
+
+<h2>Riegenmitglieder bearbeiten: @Model.Name</h2>
+<hr />
+
+<div class="row">
+
+    <div class="col-lg-5">
+        @using (Html.BeginForm("AddUsersToSection", "Sections", new { sectionID = Model.ID }, FormMethod.Post, new { encType = "multipart/form-data", name = "listOut" }))
+        {
+            <input class="form-control" type="submit" name="operation" id="submit" value="Zur Gruppe hinzufügen" /><br />
+            <table class="table table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxAll">
+                            </div>
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mOut in membersOut)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input chkCheckBoxId" type="checkbox" value="@mOut.ID" name="ID">
+                                </div>
+                            </td>
+                            <td><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; @mOut.FirstName @mOut.LastName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+
+
+    <div class="col-lg-5">
+        @using (Html.BeginForm("RemoveUsersFromSection", "Sections", new { sectionID = Model.ID }, FormMethod.Post, new { encType = "multipart/form-data", name = "listIn" }))
+        {
+            <input class="form-control" type="submit" name="operation" id="submit" value="Aus Gruppe entfernen" /><br />
+            <table class="table table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxAll">
+                            </div>
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="listIn">
+                    @foreach (var mIn in membersIn)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input chkCheckBoxId" type="checkbox" value="@mIn.ID" name="ID">
+                                </div>
+                            </td>
+                            <td><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; @mIn.FirstName @mIn.LastName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DataTable').DataTable();
+        $('#checkBoxAll').click(function () {
+            if ($(this).is(":checked")) {
+                $(".chkCheckBoxId").prop("checked", true)
+            }
+            else {
+                $(".chkCheckBoxId").prop("checked", false)
+            }
+        });
+    });
+</script>
+
+
